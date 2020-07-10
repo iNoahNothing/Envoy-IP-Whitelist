@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+data:
+  cidrs: |
+    172.0.0.0/8
+    192.0.0.0/8
+    71.191.71.93/32
+kind: ConfigMap
+metadata:
+  name: cidr-cm
