@@ -3,7 +3,6 @@ apiVersion: getambassador.io/v2
 kind: Filter
 metadata:
   name: envoy-whitelist
-  namespace: ambassador
 spec:
   External:
     auth_service: envoy-whitelist:10000
@@ -13,7 +12,6 @@ apiVersion: getambassador.io/v2
 kind: FilterPolicy
 metadata:
   name: envoy-whitelist
-  namespace: ambassador
 spec:
   rules:
   - host: "*"

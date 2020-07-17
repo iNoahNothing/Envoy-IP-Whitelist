@@ -37,6 +37,9 @@ spec:
         volumeMounts:
         - name: cidrs
           mountPath: /etc/cidrs
+        env:
+        - name: XFF_NUM_TRUSTED_HOPS
+          value: "1"
       volumes:
       - name: cidrs
         configMap:

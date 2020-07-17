@@ -1,5 +1,7 @@
 #!/bin/bash
 
+XFF_NUM_HOPS=${XFF_NUM_TRUSTED_HOPS:-1}
+
 echo '
 static_resources:
   listeners:
@@ -50,22 +52,22 @@ do
                                 value: $MASK
   " >> envoy.yaml.tmp
 done
-echo '
+echo "
           - name: envoy.router
             config: {}
           access_log:
             name: envoy.file_access_log
             config: {path: /dev/stdout}
-          xff_num_trusted_hops: 1
+          xff_num_trusted_hops: $XFF_NUM_HOPS
           use_remote_address: true
 
 admin:
-  access_log_path: "/dev/stdout"
+  access_log_path: '/dev/stdout'
   address:
     socket_address:
       address: 0.0.0.0
       port_value: 8080
-' >> envoy.yaml.tmp
+" >> envoy.yaml.tmp
 
 cp envoy.yaml.tmp /etc/envoy/envoy.yaml
 
